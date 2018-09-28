@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageHubClient", "MessageHubClient\MessageHubClient.csproj", "{A15E3E6C-9B0C-4CB0-9C91-33EEC726A63D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{CF6AE1AB-C243-4E35-A589-B574E4DE9AF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageHubClient.tests", "MessageHubClient.tests\MessageHubClient.tests.csproj", "{EC930694-2D42-473F-95CF-21997A872D51}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A15E3E6C-9B0C-4CB0-9C91-33EEC726A63D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A15E3E6C-9B0C-4CB0-9C91-33EEC726A63D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A15E3E6C-9B0C-4CB0-9C91-33EEC726A63D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A15E3E6C-9B0C-4CB0-9C91-33EEC726A63D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC930694-2D42-473F-95CF-21997A872D51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC930694-2D42-473F-95CF-21997A872D51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC930694-2D42-473F-95CF-21997A872D51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC930694-2D42-473F-95CF-21997A872D51}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EC930694-2D42-473F-95CF-21997A872D51} = {CF6AE1AB-C243-4E35-A589-B574E4DE9AF5}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E0A98B27-3AAE-4F29-A971-B03A5BDE2E55}
+	EndGlobalSection
+EndGlobal
