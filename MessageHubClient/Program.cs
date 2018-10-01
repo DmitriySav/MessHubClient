@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace MessageHubClient
 {
-    class Program
+    public class Program
     {
         static void Main()
         {
@@ -21,19 +21,15 @@ namespace MessageHubClient
             var settings = new ClientSetting();
 
             settings = configuration.GetSection("clientSetting").Get<ClientSetting>();
-                
-            
 
+            string token = TokenService.GetToken(settings);
 
-            string token = GetToken(settings);
-
-            var connection = new HubConnectionManager();
-            connection.Connect(settings.host);
+            var connection = new HubConnection(settings.host);
             if (!string.IsNullOrEmpty(token))
             {
-                connection.AddBearerToken(token);
+                connection.Headers.Add("Authorization", $"Bearer {token}");
             }
-            var messageHubProxy = connection.GetHubProxy("MessageHub");
+            var messageHubProxy = connection.CreateHubProxy(settings.hubName);
             messageHubProxy.On<string>("broadcastMessage", Console.WriteLine);
             connection.Start().Wait();
 
@@ -43,34 +39,6 @@ namespace MessageHubClient
         }
 
 
-        static string GetToken(ClientSetting setting)
-        {
-            var pairs = new List<KeyValuePair<string, string>>
-            {
-                new KeyValuePair<string, string>( "grant_type", "password" ),
-                new KeyValuePair<string, string>( "username", setting.userName ),
-                new KeyValuePair<string, string> ( "Password", setting.password )
-            };
-            var content = new FormUrlEncodedContent(pairs);
-
-            using (var client = new HttpClient())
-            {
-                var response = client.PostAsync(setting.host + "token", content).Result;
-                if (response.IsSuccessStatusCode)
-                {
-                    var result = response.Content.ReadAsStringAsync().Result;
-
-                    Dictionary<string, string> tokenDictionary =
-                        JsonConvert.DeserializeObject<Dictionary<string, string>>(result);
-
-                    Console.WriteLine("Token {0}", tokenDictionary["access_token"]);
-
-                    return tokenDictionary["access_token"];
-                }
-
-                return String.Empty;
-
-            }
-        }
+        
     }
 }
