@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
+
 using System.IO;
-using System.Net.Http;
 using MessageHubClient.Services;
 using Microsoft.AspNet.SignalR.Client;
 using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
+
 
 namespace MessageHubClient
 {
@@ -16,11 +15,9 @@ namespace MessageHubClient
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .Build();
+                .Build();           
 
-            var settings = new ClientSetting();
-
-            settings = configuration.GetSection("clientSetting").Get<ClientSetting>();
+            var settings = configuration.GetSection("clientSetting").Get<ClientSetting>();
 
             string token = TokenService.GetToken(settings);
 
